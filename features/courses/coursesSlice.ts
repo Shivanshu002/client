@@ -26,11 +26,11 @@ const coursesSlice = createSlice({
     fetchCoursesSuccess: (state, action: PayloadAction<Course[]>) => { state.loading = false; state.data = action.payload; },
     fetchCoursesFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
 
-    addCourseStart: (state) => { state.loading = true; },
+    addCourseStart: (state, _action: PayloadAction<Omit<Course, '_id' | 'createdAt'>>) => { state.loading = true; },
     addCourseSuccess: (state, action: PayloadAction<Course>) => { state.loading = false; state.data.unshift(action.payload); },
     addCourseFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
 
-    updateCourseStart: (state) => { state.loading = true; },
+    updateCourseStart: (state, _action: PayloadAction<{ id: string; body: Omit<Course, '_id' | 'createdAt'> }>) => { state.loading = true; },
     updateCourseSuccess: (state, action: PayloadAction<Course>) => {
       state.loading = false;
       const idx = state.data.findIndex(c => c._id === action.payload._id);
@@ -38,7 +38,7 @@ const coursesSlice = createSlice({
     },
     updateCourseFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
 
-    deleteCourseStart: (state) => { state.loading = true; },
+    deleteCourseStart: (state, _action: PayloadAction<string>) => { state.loading = true; },
     deleteCourseSuccess: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.data = state.data.filter(c => c._id !== action.payload);

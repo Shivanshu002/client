@@ -24,7 +24,7 @@ const trainersSlice = createSlice({
     fetchTrainersSuccess: (state, action: PayloadAction<Trainer[]>) => { state.loading = false; state.data = action.payload; },
     fetchTrainersFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
 
-    deleteTrainerStart: (state) => { state.loading = true; },
+    deleteTrainerStart: (state, _action: PayloadAction<string>) => { state.loading = true; },
     deleteTrainerSuccess: (state, action: PayloadAction<string>) => {
       state.loading = false;
       state.data = state.data.filter(t => t._id !== action.payload);

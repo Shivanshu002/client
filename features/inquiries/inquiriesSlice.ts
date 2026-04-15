@@ -27,7 +27,9 @@ const inquiriesSlice = createSlice({
     fetchInquiriesSuccess: (state, action: PayloadAction<Inquiry[]>) => { state.loading = false; state.data = action.payload; },
     fetchInquiriesFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
 
-    addInquiryStart: (state) => { state.loading = true; state.submitted = false; },
+    addInquiryStart: (state, _action: PayloadAction<Omit<Inquiry, '_id' | 'createdAt'>>) => {
+      state.loading = true; state.submitted = false;
+    },
     addInquirySuccess: (state, action: PayloadAction<Inquiry>) => { state.loading = false; state.submitted = true; state.data.unshift(action.payload); },
     addInquiryFailure: (state, action: PayloadAction<string>) => { state.loading = false; state.error = action.payload; },
     resetSubmitted: (state) => { state.submitted = false; },
