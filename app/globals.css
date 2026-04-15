@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── LIGHT THEME ── */
+:root,
+[data-theme='light'] {
+  --bg:            0 0% 100%;
+  --bg-secondary:  48 30% 96%;
+  --fg:            20 14% 10%;
+  --fg-muted:      20 10% 42%;
+  --border:        48 20% 88%;
+  --card:          0 0% 100%;
+  --card-fg:       20 14% 10%;
+  --primary:       #eab308;
+  --primary-dark:  #ca8a04;
+  --primary-light: #fef9c3;
+  --primary-fg:    #1a1200;
+  --footer-bg:     #111827;
+  --footer-fg:     #9ca3af;
+  --footer-head:   #ffffff;
+  --footer-border: #1f2937;
+  --title-a:       #1a1200;
+  --title-b:       #eab308;
+}
+
+/* ── DARK THEME ── */
+[data-theme='dark'] {
+  --bg:            20 14% 7%;
+  --bg-secondary:  20 14% 10%;
+  --fg:            48 30% 95%;
+  --fg-muted:      48 15% 60%;
+  --border:        20 14% 18%;
+  --card:          20 14% 10%;
+  --card-fg:       48 30% 95%;
+  --primary:       #eab308;
+  --primary-dark:  #ca8a04;
+  --primary-light: #422006;
+  --primary-fg:    #1a1200;
+  --footer-bg:     #0a0a0a;
+  --footer-fg:     #6b7280;
+  --footer-head:   #f9fafb;
+  --footer-border: #1f2937;
+  --title-a:       #fef9c3;
+  --title-b:       #eab308;
+}
+
+/* ── FOREST THEME ── */
+[data-theme='forest'] {
+  --bg:            138 30% 97%;
+  --bg-secondary:  138 20% 93%;
+  --fg:            150 40% 10%;
+  --fg-muted:      150 15% 40%;
+  --border:        138 20% 85%;
+  --card:          0 0% 100%;
+  --card-fg:       150 40% 10%;
+  --primary:       #16a34a;
+  --primary-dark:  #15803d;
+  --primary-light: #dcfce7;
+  --primary-fg:    #ffffff;
+  --footer-bg:     #052e16;
+  --footer-fg:     #86efac;
+  --footer-head:   #f0fdf4;
+  --footer-border: #14532d;
+  --title-a:       #052e16;
+  --title-b:       #16a34a;
+}
+
+/* ── BASE ── */
+body {
+  background-color: hsl(var(--bg));
+  color: hsl(var(--fg));
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root, [data-theme] {
+  --background:           var(--bg);
+  --foreground:           var(--fg);
+  --muted:                var(--bg-secondary);
+  --muted-foreground:     var(--fg-muted);
+  --border:               var(--border);
+  --primary:              var(--primary);
+  --primary-foreground:   var(--primary-fg);
+  --secondary:            var(--bg-secondary);
+  --secondary-foreground: var(--fg);
+  --card:                 var(--card);
+  --card-foreground:      var(--card-fg);
+  --destructive:          0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --radius:               0.5rem;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp   { from { opacity:0; transform:translateY(30px); }  to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInLeft { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeInRight{ from { opacity:0; transform:translateX(30px); }  to { opacity:1; transform:translateX(0); } }
+@keyframes float      { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-12px); } }
+@keyframes countUp    { from { opacity:0; transform:scale(0.5); } to { opacity:1; transform:scale(1); } }
+
+.animate-fade-in-up    { animation: fadeInUp 0.7s ease forwards; }
+.animate-fade-in-left  { animation: fadeInLeft 0.7s ease forwards; }
+.animate-fade-in-right { animation: fadeInRight 0.7s ease forwards; }
+.animate-float         { animation: float 4s ease-in-out infinite; }
+.animate-count-up      { animation: countUp 0.6s ease forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--primary-fg);
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+/* outline: border + text use --primary, fill on hover */
+.btn-outline-primary {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  color: var(--primary-fg);
+}
+
+/* ── PRIMARY UTILITIES ── */
+.bg-primary       { background-color: var(--primary); }
+.bg-primary-light { background-color: var(--primary-light); }
+.text-primary     { color: var(--primary); }
+.border-primary   { border-color: var(--primary); }
+
+/* ── NAV ACTIVE / HOVER ── */
+.nav-active {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+.nav-hover:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* ── SPLIT TITLE ── */
+.split-title-plain  { color: var(--title-a); transition: color 0.3s ease; }
+.split-title-accent { color: var(--title-b); transition: color 0.3s ease; }
+
+/* ── GLASS ── */
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  width: 48px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  margin: 12px auto 0;
+}
+
+/* ── CARD HOVER ── */
+.card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(0,0,0,0.10); }
+
+/* ── THEME UTILITIES ── */
+.theme-card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-fg));
+  border-color: hsl(var(--border));
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.theme-bg           { background-color: hsl(var(--bg)); transition: background-color 0.3s ease; }
+.theme-bg-secondary { background-color: hsl(var(--bg-secondary)); transition: background-color 0.3s ease; }
+.theme-fg           { color: hsl(var(--fg)); }
+.theme-fg-muted     { color: hsl(var(--fg-muted)); }
+.theme-border       { border-color: hsl(var(--border)); }
+
+/* ── FOOTER ── */
+.theme-footer        { background-color: var(--footer-bg); color: var(--footer-fg); transition: background-color 0.3s ease; }
+.theme-footer-head   { color: var(--footer-head); }
+.theme-footer-border { border-color: var(--footer-border); }
+
+/* ── SCROLLBAR ── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  button, a { min-height: 44px; }
+}
